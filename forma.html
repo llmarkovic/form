@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forma</title>
+    <style>
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: blue ;
+      }
+      
+      li {
+        float: left;
+      }
+      
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: large;
+        letter-spacing: 1.3px;
+      }
+      
+      li a:hover {
+        background-color: gray;
+        font-size: larger;
+      }
+      </style>
+
+
+      <script>
+        
+        function validation() {
+
+          var ime=document.MojaForma.ime.value;
+          var lozinka=document.MojaForma.lozinka.value;
+          var email=document.MojaForma.email.value;
+          var prezime=document.MojaForma.prezime.value;
+          var Potvrda=document.MojaForma.Potvrda.value;
+
+
+          if (ime === "" || ime === null) {
+              alert("Niste uneli ime!");
+              document.getElementById("ime").style.borderColor="red";
+              return false;
+          }
+          else if (prezime === "" || prezime === null) {
+              alert("Niste uneli prezime");
+              document.getElementById("prezime").style.borderColor="red";
+              return false;
+          }
+          else if (email === "" || email === null) {
+              alert("Niste uneli email!");
+              document.getElementById("email").style.borderColor="red";
+              return false;
+          }
+          else if (lozinka === "" ||  lozinka=== null) {
+              alert("Niste uneli lozinku!");
+              document.getElementById("lozinka").style.borderColor="red";
+              return false;
+          }
+          else if ( Potvrda=== "" ||  Potvrda=== null) {
+              alert("Niste uneli potvrdu!");
+              document.getElementById("Potvrda").style.borderColor="red";
+              return false;
+          }
+          else{
+              
+              return true;
+
+          }       
+          }
+
+          function Check(){
+                      var pasd=document.getElementById('lozinka').value
+                      var pasda=document.getElementById('Potvrda').value
+
+                      if(pasd!=pasda){
+                          alert("Unesite istu sifru");
+                          document.getElementById("lozinka").style.borderColor="red";
+                          document.getElementById("Potvrda").style.borderColor="red";
+                          return false;
+                      }
+                      if(pasd=pasda){
+                          alert("Uneli ste ispravno");
+                          return true;
+                      }
+                  }
+
+             function confirmation(){
+                localStorage["adresa"]=document.getElementById("email").value;
+      }     
+    </script>
+</head>
+
+
+
+<body>
+
+    <ul>
+        <li><a href="pocetna.html">Početna</a></li>
+        <li><a href="bio.html">Biografija</a></li>
+        <li><a href="moj-rad.html">Moj rad</a></li>
+        <li><a href="galerija.html">Galerija</a></li>
+        <li><a class="active" href="forma.html">Forma</a></li>
+      </ul>
+
+    <div>
+    <form action="./tabela.html" name="MojaForma" method="GET" autocomplete="off" onsubmit="return (validation() && Check())">
+        <table  cellpadding="3" cellspacing="5">
+        
+        <tr>    
+            <td>
+                <label for="ime">Ime</label>
+            </td>
+            <td>
+                <input type="text" name="ime" id="ime">
+            </td>
+        </tr>
+        
+
+        <tr>
+            <td>
+                <label for="prezime">Prezime</label>
+            </td>
+            <td>
+                <input type="text" name="prezime" id="prezime">
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <label for="email">Email</label>
+            </td>
+            <td>
+                <input type="email" name="email" id="email">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="lozinka">Lozinka</label>
+            </td>
+            <td>
+                <input type="password" name="lozinka" id="lozinka">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="Potvrda">Potvrda lozinke</label>
+            </td>
+            <td>
+                <input type="password" name="Potvrda" id="Potvrda">
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+        <input type="submit" name="Registruj" id="Registruj" value="Potvrdi" style="font-weight: bold;" onclick="confirmation()" >
+            </td>
+        </tr>
+            
+    </table>
+    </form>
+    </div>
+    
+</body>
+</html>
